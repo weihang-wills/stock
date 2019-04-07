@@ -1,0 +1,8 @@
+{
+
+  "triggers": [{
+    "name": "trigger",
+    "type": "timer",
+    "config": "1 1 0 * * * *"
+  }]
+}

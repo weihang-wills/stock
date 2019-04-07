@@ -1,0 +1,18 @@
+{
+  "pages": [
+    "pages/index/index",
+
+    "pages/storageConsole/storageConsole",
+
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib"
+  ],
+  "window": {
+    "backgroundColor": "#265e82",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "炒股天天乐",
+    "navigationBarTextStyle": "black"
+  }
+}

@@ -1,0 +1,85 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 用户 openid -->
+
+  <view class="asset">
+    <view class='user'>
+    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="useravatar" style="background-image: url({{avatarUrl}})"></button>
+    <view class='nickkname'>
+      {{nickname}}
+    </view>
+  </view>
+    <view bindtap='seeasset' class='total'>总资产：{{totalAssets}}
+      ></view>
+
+  </view>
+
+  <!-- 购买列表 -->
+
+  <view class='modal-mask' wx:if='{{onshow}}' bindtap='modalcancel'></view>
+  <view class='back1' wx:if='{{onshow}}'>
+    <view>可使用现金￥1000</view>
+    <form bindsubmit='onsubmit'>
+      <view class='row' wx:for='{{stockprice}}' wx:key="index">
+        <view class='company'>
+          {{index+1}}、{{item.name}}
+          ￥{{item.price}}
+        </view>
+        <input class='input' type='number' name='{{index}}'/>
+        <view class='rate'>
+          股
+        </view>
+      </view>
+
+      <button class='sure1' form-type='submit'><image class='sure' src='../../images/sure.png'/></button>
+    </form>
+  </view>
+
+  <!-- 查看资产 -->
+
+  <view class='modal-mask' wx:if='{{onshowmyasset}}' bindtap='modalcancelasset'></view>
+  <view class='back1' wx:if='{{onshowmyasset}}'>
+    <view>我的持有情况</view>
+    <view class='row1' wx:for='{{stock}}' wx:key="index">
+      <view class='company2'>
+        {{index+1}}、{{item.name}}  ￥{{item.price}}
+      </view>
+
+      <view class='rate'>
+        {{item.hold}} 股
+      </view>
+    </view>
+
+  </view>
+
+  <!-- 每日列表 -->
+  <view class='back'>
+    <image class='meiri' src='../../images/meiri.png'/>
+    <view class="hold">
+      <view class='row' wx:for='{{stockprice}}' wx:key="index">
+
+        <view class="company1">
+          {{index+1}}、{{item.name}}
+        </view>
+        <view class="price">￥{{item.price}}</view>
+        <!-- class里面做三元运算符判断 -->
+        <view class="{{item.rate<0?'rateminus':'rate'}}">
+          <view wx:if="{{item.rate<0}}">
+            {{item.rate}}%
+          </view>
+          <view wx:else="wx:else">
+            +{{item.rate}}%
+          </view>
+        </view>
+
+      </view>
+    </view>
+  </view>
+
+<view class='bottom' wx:if='{{exist}}'/>
+  <image class='buy' src='../../images/buy.png' bindtap='onshow' wx:if='{{exist}}'/>
+
+  <!-- <button bindtap='delect'>删除</button> -->
+
+</view>
