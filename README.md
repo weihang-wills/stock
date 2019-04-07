@@ -17,10 +17,10 @@
 **前端**
 
 >- 透明渐变的CSS，用rgba(0,0,0,0)，还有各种方向的渐变
-- position：fixed  +  z-index，可以制作弹窗效果
-- flex布局的子内容，只有`width`用具体数值才会精确，用百分比的话会自动给你加间隔
-- 文字一行做缩略，overflow:hidden, text-overflow:ellipsis, white-space:nowrap
-- positon的声明absolute，必须以最近一个父级为基准，如果没有父级声明` position`，则以整个页面为基准
+>- position：fixed  +  z-index，可以制作弹窗效果
+>- flex布局的子内容，只有`width`用具体数值才会精确，用百分比的话会自动给你加间隔
+>- 文字一行做缩略，overflow:hidden, text-overflow:ellipsis, white-space:nowrap
+>- positon的声明absolute，必须以最近一个父级为基准，如果没有父级声明` position`，则以整个页面为基准
 
 
 --- 
@@ -28,4 +28,4 @@
 **云函数**
 
 >- 云函数执行的是index.main方法，所以要通过把main exports出来
-- class可以用三元运算符做判断套用哪个class：class="{{sum<0?'class1':'class2'}}"
+>- class可以用三元运算符做判断套用哪个class：class="{{sum<0?'class1':'class2'}}"
