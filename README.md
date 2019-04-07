@@ -20,5 +20,7 @@
 - 文字一行做缩略，overflow:hidden, text-overflow:ellipsis, white-space:nowrap
 - positon的声明absolute，必须以最近一个父级为基准，如果没有父级声明position，则以整个页面为基准
 
+--- 
+
 - 云函数执行的是index.main方法，所以要通过把main exports出来
 - class可以用三元运算符做判断套用哪个class：class="{{sum<0?'class1':'class2'}}"
