@@ -410,7 +410,7 @@ Page({
           that.setData({
             renewHold:true,
 
-            totalAssets: totalAssets,
+            totalAssets: totalAssets.toFixed(2),
             stock:res[1].result.data[0].stock,
 
           })

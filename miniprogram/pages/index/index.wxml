@@ -77,8 +77,15 @@
     </view>
   </view>
 
+
+  <button open-type='contact' class='hint'>每日23:23更新股价，更多问题可以咨询客服></button>
+
+
+
 <view class='bottom' wx:if='{{exist}}'/>
   <image class='buy' src='../../images/buy.png' bindtap='onshow' wx:if='{{exist}}'/>
+
+
 
   <!-- <button bindtap='delect'>删除</button> -->
 

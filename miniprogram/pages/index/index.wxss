@@ -1,7 +1,7 @@
 /**index.wxss**/
 
 page {
-  background: url('https://img.jogiter.cn/third/shares.jpg');
+  background: url('https://img.jogiter.cn/third/shares.png');
 
   background-size: 100%;
   display: flex;
@@ -18,6 +18,16 @@ page {
 
 }
 
+.hint{
+  font-size: 28rpx;
+  color:white;
+  margin-bottom: 30rpx;
+  background: none;
+}
+.hint::after{
+  border: none;
+}
+
 .back{
 
   display: flex;
@@ -30,7 +40,7 @@ page {
   border-radius: 10rpx;
 
   padding-bottom: 30rpx;
-  margin-bottom: 140rpx;
+  margin-bottom: 10rpx;
 }
 .bottom{
   position: fixed;
@@ -227,8 +237,8 @@ width:100%;
   align-items: center;
   width:679rpx;
   height: 190rpx;
-  margin-top: 150rpx;
-  margin-bottom: 30rpx;
+  margin-top: 130rpx;
+  margin-bottom: 20rpx;
 }
 
 .user{

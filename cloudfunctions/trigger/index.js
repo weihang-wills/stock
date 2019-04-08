@@ -27,7 +27,7 @@ exports.main = async (event, context) => {
       var newprice = [];
       for (var i = 0; i < 10; i++) {
 
-        newprice.push(parseInt((1 + arr[i]) * price.stockprice[i].price))
+        newprice.push(((1 + arr[i]) * price.stockprice[i].price).toFixed(2))
         }
 
         console.log('newprice:' + newprice)
@@ -96,19 +96,20 @@ exports.main = async (event, context) => {
 
         console.log('stockprice:' + stockprice)
 
-        db.collection('stockprice').add({
-            data: {
+        await db.collection('stockprice')
+        .add({
+            data:{
               date: new Date(),
-              stockprice: stockprice
-
-
+              stockprice: stockprice,
 
             }
           })
           .then(res => {
             console.log('录入成功' + res)
           })
-          .catch(console.error)
+
+
+
 
 
 

@@ -3,6 +3,6 @@
   "triggers": [{
     "name": "trigger",
     "type": "timer",
-    "config": "1 1 0 * * * *"
+    "config": "1 23 23 * * * *"
   }]
 }
