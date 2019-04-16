@@ -1,17 +1,21 @@
 <!--index.wxml-->
-<view class="container">
+<view class='container'>
 
   <!-- 用户 openid -->
 
   <view class="asset">
     <view class='user'>
-    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="useravatar" style="background-image: url({{avatarUrl}})"></button>
-    <view class='nickkname'>
-      {{nickname}}
+      <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="useravatar" style="background-image: url({{avatarUrl}})"></button>
+      <view class='nickkname'>
+        {{nickname}}
+      </view>
     </view>
-  </view>
-    <view bindtap='seeasset' class='total'>总资产：{{totalAssets}}
-      ></view>
+    <view class='total'>
+      <view>总资产：</view>
+      <button open-type="getUserInfo" bindgetuserinfo='seeasset' class='totalbutton'>{{totalAssets}}
+        >
+      </button>
+    </view>
 
   </view>
 
@@ -43,50 +47,79 @@
     <view>我的持有情况</view>
     <view class='row1' wx:for='{{stock}}' wx:key="index">
       <view class='company2'>
-        {{index+1}}、{{item.name}}  ￥{{item.price}}
+        {{index+1}}、{{item.name}}
+        ￥{{item.price}}
       </view>
 
       <view class='rate'>
-        {{item.hold}} 股
+        {{item.hold}}
+        股
       </view>
     </view>
 
   </view>
 
   <!-- 每日列表 -->
+
   <view class='back'>
-    <image class='meiri' src='../../images/meiri.png'/>
-    <view class="hold">
-      <view class='row' wx:for='{{stockprice}}' wx:key="index">
+    <!-- <image class='meiri' src='../../images/meiri.png'/> -->
+    <view class='tab'>
+    <view class='focus {{current==0?"":"no"}}' data-current="0" bindtap='changetab'>每日股价</view>
+    <view class='focus {{current==1?"":"no"}}' data-current="1" bindtap='changetab'>排行榜</view>
+  </view>
+    <swiper
+      current='{{current}}'
+      style='height:{{swiperheight}}rpx'
+      >
+      <swiper-item class='hold'>
 
-        <view class="company1">
-          {{index+1}}、{{item.name}}
-        </view>
-        <view class="price">￥{{item.price}}</view>
-        <!-- class里面做三元运算符判断 -->
-        <view class="{{item.rate<0?'rateminus':'rate'}}">
-          <view wx:if="{{item.rate<0}}">
-            {{item.rate}}%
-          </view>
-          <view wx:else="wx:else">
-            +{{item.rate}}%
-          </view>
-        </view>
+          <view class='row' wx:for='{{stockprice}}' wx:key="index">
 
-      </view>
-    </view>
+            <view class="company1">
+              {{index+1}}、{{item.name}}
+            </view>
+            <view class="price">￥{{item.price}}</view>
+            <!-- class里面做三元运算符判断 -->
+            <view class="{{item.rate<0?'rateminus':'rate'}}">
+              <view wx:if="{{item.rate<0}}">
+                {{item.rate}}%
+              </view>
+              <view wx:else="wx:else">
+                +{{item.rate}}%
+              </view>
+            </view>
+
+          </view>
+
+      </swiper-item>
+      <swiper-item class='hold'>
+        <view class='row' wx:for='{{rank}}' wx:key='{{item.index}}'>
+          <view class='left'>
+          <image class='useravatar' src="{{!item.avatarUrl?'../index/user-unlogin.png':item.avatarUrl}}"/>
+          <view class='nickname'>
+            {{!item.nickname?'某用户':item.nickname}}
+          </view>
+          <view class='gushen' wx:if='{{index==0}}'>股神</view>
+        </view>
+          <view class='zichan'>
+            ￥{{item.totalAssets?item.totalAssets:0}}
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+
   </view>
 
+  <!-- 每日11点更新说明 -->
 
   <button open-type='contact' class='hint'>每日23:23更新股价，更多问题可以咨询客服></button>
 
-
-
-<view class='bottom' wx:if='{{exist}}'/>
-  <image class='buy' src='../../images/buy.png' bindtap='onshow' wx:if='{{exist}}'/>
-
-
+  <view class='bottom' wx:if='{{exist}}'/>
+  <button class='buy' open-type="getUserInfo" bindgetuserinfo='onshow'>
+    <image class='buy1' src='../../images/buy.png' wx:if='{{exist}}'/>
+  </button>
 
   <!-- <button bindtap='delect'>删除</button> -->
+  <!-- <button bindtap='update'>更新</button> -->
 
 </view>
